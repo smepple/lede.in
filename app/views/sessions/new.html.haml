@@ -1,0 +1,20 @@
+.row
+  %header.jumbotron
+    %h1= link_to "lede.in", root_path
+    %p.lead Read stuff you've saved to Instapaper...faster!
+
+.row
+  %a.btn.btn-primary.btn-large{"data-target" => "#signin_form", "data-toggle" => "modal"} Sign in with Instapaper
+
+#signin_form.modal.fade.hide
+  .modal-header
+    / %button.close{:type => "button", "data-dismiss" => "modal"} x
+    %h3 Sign in
+  .modal-body
+    %p.lead Enter your Instapaper credentials to get started
+    = form_tag sessions_path do |f|
+      = label_tag :x_auth_username, "Username"
+      = text_field_tag :x_auth_username
+      = label_tag :password
+      = password_field_tag :password
+      %p= submit_tag "Let's get reading!", :class => "btn btn-large btn-primary"

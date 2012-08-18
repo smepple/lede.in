@@ -11,17 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815111802) do
+ActiveRecord::Schema.define(:version => 20120818143112) do
 
   create_table "users", :force => true do |t|
     t.integer  "x_auth_uid"
     t.string   "x_auth_username"
-    t.string   "x_auth_password_digest"
     t.string   "oauth_token"
     t.string   "oauth_token_secret"
     t.string   "email"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

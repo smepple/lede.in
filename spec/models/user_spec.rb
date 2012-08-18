@@ -2,15 +2,14 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
-#  x_auth_uid             :integer
-#  x_auth_username        :string(255)
-#  x_auth_password_digest :string(255)
-#  oauth_token            :string(255)
-#  oauth_token_secret     :string(255)
-#  email                  :string(255)
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  id                 :integer          not null, primary key
+#  x_auth_uid         :integer
+#  x_auth_username    :string(255)
+#  oauth_token        :string(255)
+#  oauth_token_secret :string(255)
+#  email              :string(255)
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
 require 'spec_helper'

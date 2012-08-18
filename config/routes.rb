@@ -1,4 +1,11 @@
 Ledein::Application.routes.draw do
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
+  root to: "sessions#new"
+  match "signin", to: "sessions#new"
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
