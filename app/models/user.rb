@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def self.from_instapaper(auth, cred)
-    where(cred[0]["user_id"]).first || create_from_instapaper(auth, cred)
+    where("x_auth_uid = #{cred[0]["user_id"]}").first || create_from_instapaper(auth, cred)
   end
 
   def self.create_from_instapaper(auth, cred)
