@@ -42,4 +42,9 @@ class User < ActiveRecord::Base
       user.oauth_token_secret = auth["oauth_token_secret"]
     end
   end
+
+  def authorize
+    Instapaper.oauth_token = self.oauth_token
+    Instapaper.oauth_token_secret = self.oauth_token_secret
+  end
 end

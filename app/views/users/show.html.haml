@@ -1,3 +1,9 @@
-.row
-  %h1 Profile
-  %p.lead Welcome to lede.in
+%h1 Profile
+%p.lead Welcome to lede.in
+
+%h2 Bookmarks
+- i = 0
+- while i < @bookmarks.count do
+  - @bookmark = @bookmarks[i]
+  %p= link_to @bookmark["title"], @bookmark["url"], {target: "_blank"}, id: @bookmark["bookmark_id"]
+  - i += 1
