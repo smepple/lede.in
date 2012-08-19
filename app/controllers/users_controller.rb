@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user.authorize
-    @bookmarks = Instapaper.bookmarks("limit" => 10)
+    @folders = @user.get_folder_list
+    @bookmarks = @user.get_bookmarks_list(10)
   end
 end

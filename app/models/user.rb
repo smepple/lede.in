@@ -47,4 +47,22 @@ class User < ActiveRecord::Base
     Instapaper.oauth_token = self.oauth_token
     Instapaper.oauth_token_secret = self.oauth_token_secret
   end
+
+  def get_folder_list
+    self.authorize
+    @folders = Instapaper.folders
+  end
+
+  def get_bookmarks_list(limit)
+    self.authorize
+    @bookmarks = Instapaper.bookmarks("limit" => limit)
+    # i = 0
+    # while i < @bookmarks.count do
+    #   @bookmark = @bookmarks[i]
+    #   @bookmark_id = @bookmark["bookmark_id"]
+    #   @bookmark_title = @bookmark["title"]
+    #   @bookmark_url = @bookmark["url"]
+    #   i += 1
+    # end
+  end
 end
