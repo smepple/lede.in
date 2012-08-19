@@ -11,7 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120818143112) do
+ActiveRecord::Schema.define(:version => 20120819192913) do
+
+  create_table "bookmarks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "bookmark_id"
+    t.string   "description"
+    t.string   "bookmark_hash"
+    t.boolean  "private_source"
+    t.float    "progress"
+    t.datetime "progress_timestamp"
+    t.boolean  "starred"
+    t.datetime "time"
+    t.string   "title"
+    t.string   "bookmark_type"
+    t.string   "url"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "bookmarks", ["bookmark_hash"], :name => "index_bookmarks_on_hash"
+  add_index "bookmarks", ["bookmark_id", "bookmark_hash"], :name => "index_bookmarks_on_bookmark_id_and_hash", :unique => true
+  add_index "bookmarks", ["bookmark_id"], :name => "index_bookmarks_on_bookmark_id"
+  add_index "bookmarks", ["user_id", "bookmark_id"], :name => "index_bookmarks_on_user_id_and_bookmark_id", :unique => true
+  add_index "bookmarks", ["user_id"], :name => "index_bookmarks_on_user_id"
+
+  create_table "folders", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "folder_id"
+    t.integer  "position"
+    t.boolean  "sync_to_mobile"
+    t.string   "title"
+    t.string   "folder_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "folders", ["folder_id"], :name => "index_folders_on_folder_id"
+  add_index "folders", ["user_id", "folder_id"], :name => "index_folders_on_user_id_and_folder_id", :unique => true
+  add_index "folders", ["user_id"], :name => "index_folders_on_user_id"
 
   create_table "users", :force => true do |t|
     t.integer  "x_auth_uid"

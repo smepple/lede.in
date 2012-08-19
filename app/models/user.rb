@@ -14,6 +14,9 @@
 
 class User < ActiveRecord::Base
 
+  has_many :folders, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+
   validates :x_auth_uid, 
             :x_auth_username, 
             :oauth_token, 

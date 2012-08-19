@@ -1,22 +1,14 @@
 %h1 
   Folders
-%hr
-%p= link_to "Unread"
-%p= link_to "Starred"
-- i = 0
-- while i < @folders.count do
-  - @folder = @folders[i]
-  %p= link_to @folder["title"]
-  - i += 1
-%p= link_to "Archive"
-%hr
+.well
+  %p= link_to "Unread"
+  %p= link_to "Starred"
+  - for @folder in @folders do
+    %p= link_to @folder.title
+  %p= link_to "Archive"
 
 %h1 
   Bookmarks
-%hr
-- i = 0
-- while i < @bookmarks.count do
-  - @bookmark = @bookmarks[i]
-  %p= link_to @bookmark["title"], @bookmark["url"], {target: "_blank"}, id: @bookmark["bookmark_id"]
-  - i += 1
-%hr
+.well
+  - for @bookmark in @bookmarks do
+    %p= link_to @bookmark.title, @bookmark.url, {target: "_blank"}
