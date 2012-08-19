@@ -8,6 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user.authorize
-    @bookmarks = Instapaper.bookmarks
+    @bookmarks = Instapaper.bookmarks("limit" => 10)
   end
 end
